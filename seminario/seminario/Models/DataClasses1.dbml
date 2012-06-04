@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BIBLIOTECAVIRTUAL" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=FABI-VAIO\SQLEXPRESS;Initial Catalog=BIBLIOTECAVIRTUAL;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ApplicationServices" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ADM_BIBLIOTECA" Member="ADM_BIBLIOTECAs">
+    <Type Name="ADM_BIBLIOTECA">
+      <Column Name="ID_CATEGORIA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_LIBRO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_BIBLIOTECA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_ADMINISTRADOR" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="JERARQUIA" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="ADMINISTRADOR_ADM_BIBLIOTECA" Member="ADMINISTRADOR" ThisKey="ID_ADMINISTRADOR" OtherKey="ID_ADMINISTRADOR" Type="ADMINISTRADOR" IsForeignKey="true" />
+      <Association Name="BIBLIOTECA_ADM_BIBLIOTECA" Member="BIBLIOTECA" ThisKey="ID_BIBLIOTECA" OtherKey="ID_BIBLIOTECA" Type="BIBLIOTECA" IsForeignKey="true" />
+      <Association Name="CATEGORIA_ADM_BIBLIOTECA" Member="CATEGORIA" ThisKey="ID_CATEGORIA" OtherKey="ID_CATEGORIA" Type="CATEGORIA" IsForeignKey="true" />
+      <Association Name="LIBRO_ADM_BIBLIOTECA" Member="LIBRO" ThisKey="ID_LIBRO" OtherKey="ID_LIBRO" Type="LIBRO" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ADMINISTRADOR" Member="ADMINISTRADORs">
+    <Type Name="ADMINISTRADOR">
+      <Column Name="ID_ADMINISTRADOR" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CORRECCION" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="TIPO" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Association Name="ADMINISTRADOR_ADM_BIBLIOTECA" Member="ADM_BIBLIOTECAs" ThisKey="ID_ADMINISTRADOR" OtherKey="ID_ADMINISTRADOR" Type="ADM_BIBLIOTECA" />
+      <Association Name="ADMINISTRADOR_BIBLIOTECA" Member="BIBLIOTECAs" ThisKey="ID_ADMINISTRADOR" OtherKey="ID_ADMINISTRADOR" Type="BIBLIOTECA" />
+      <Association Name="ADMINISTRADOR_LIBRO" Member="LIBROs" ThisKey="ID_ADMINISTRADOR" OtherKey="ID_ADMINISTRADOR" Type="LIBRO" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ARCHIVOS" Member="ARCHIVOs">
+    <Type Name="ARCHIVO">
+      <Column Name="ID_ARCHIVO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_BIBLIOTECA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="BIBLIOTECA_ARCHIVO" Member="BIBLIOTECA" ThisKey="ID_BIBLIOTECA" OtherKey="ID_BIBLIOTECA" Type="BIBLIOTECA" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ARTICULO" Member="ARTICULOs">
+    <Type Name="ARTICULO">
+      <Column Name="ID_ARTICULO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_BIBLIOTECA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="BIBLIOTECA_ARTICULO" Member="BIBLIOTECA" ThisKey="ID_BIBLIOTECA" OtherKey="ID_BIBLIOTECA" Type="BIBLIOTECA" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_Membership" Member="aspnet_Memberships">
+    <Type Name="aspnet_Membership">
+      <Column Name="ApplicationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="PasswordFormat" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PasswordSalt" Type="System.String" DbType="NVarChar(128) NOT NULL" CanBeNull="false" />
+      <Column Name="MobilePIN" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="LoweredEmail" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="PasswordQuestion" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Column Name="PasswordAnswer" Type="System.String" DbType="NVarChar(128)" CanBeNull="true" />
+      <Column Name="IsApproved" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsLockedOut" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CreateDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastLoginDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastPasswordChangedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastLockoutDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FailedPasswordAttemptCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FailedPasswordAttemptWindowStart" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FailedPasswordAnswerAttemptCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FailedPasswordAnswerAttemptWindowStart" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Comment" Type="System.String" DbType="NText" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="aspnet_User_aspnet_Membership" Member="aspnet_User" ThisKey="UserId" OtherKey="UserId" Type="aspnet_User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_Roles" Member="aspnet_Roles">
+    <Type Name="aspnet_Role">
+      <Column Name="ApplicationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="RoleId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RoleName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="LoweredRoleName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(256)" CanBeNull="true" />
+      <Association Name="aspnet_Role_aspnet_UsersInRole" Member="aspnet_UsersInRoles" ThisKey="RoleId" OtherKey="RoleId" Type="aspnet_UsersInRole" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_Users" Member="aspnet_Users">
+    <Type Name="aspnet_User">
+      <Column Name="ApplicationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="LoweredUserName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="MobileAlias" Type="System.String" DbType="NVarChar(16)" CanBeNull="true" />
+      <Column Name="IsAnonymous" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="LastActivityDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="aspnet_User_aspnet_Membership" Member="aspnet_Membership" ThisKey="UserId" OtherKey="UserId" Type="aspnet_Membership" Cardinality="One" />
+      <Association Name="aspnet_User_aspnet_UsersInRole" Member="aspnet_UsersInRoles" ThisKey="UserId" OtherKey="UserId" Type="aspnet_UsersInRole" />
+    </Type>
+  </Table>
+  <Table Name="dbo.aspnet_UsersInRoles" Member="aspnet_UsersInRoles">
+    <Type Name="aspnet_UsersInRole">
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RoleId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="aspnet_Role_aspnet_UsersInRole" Member="aspnet_Role" ThisKey="RoleId" OtherKey="RoleId" Type="aspnet_Role" IsForeignKey="true" />
+      <Association Name="aspnet_User_aspnet_UsersInRole" Member="aspnet_User" ThisKey="UserId" OtherKey="UserId" Type="aspnet_User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AUTOR" Member="AUTORs">
+    <Type Name="AUTOR">
+      <Column Name="ID_AUTOR" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NOMBRE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="APATERNO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AMATERNO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FECHA_NACIMIENTO" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="AUTOR_LIBRO" Member="LIBROs" ThisKey="ID_AUTOR" OtherKey="ID_AUTOR" Type="LIBRO" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BIBLIOTECA" Member="BIBLIOTECAs">
+    <Type Name="BIBLIOTECA">
+      <Column Name="ID_BIBLIOTECA" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NOMBRE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DESCRIPCION" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="TEMA" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="FECHA_PUBLI" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="TOTAL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_ADMINISTRADOR" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_INDICE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="BIBLIOTECA_ADM_BIBLIOTECA" Member="ADM_BIBLIOTECAs" ThisKey="ID_BIBLIOTECA" OtherKey="ID_BIBLIOTECA" Type="ADM_BIBLIOTECA" />
+      <Association Name="BIBLIOTECA_ARCHIVO" Member="ARCHIVOs" ThisKey="ID_BIBLIOTECA" OtherKey="ID_BIBLIOTECA" Type="ARCHIVO" />
+      <Association Name="BIBLIOTECA_ARTICULO" Member="ARTICULOs" ThisKey="ID_BIBLIOTECA" OtherKey="ID_BIBLIOTECA" Type="ARTICULO" />
+      <Association Name="BIBLIOTECA_CURSO" Member="CURSOs" ThisKey="ID_BIBLIOTECA" OtherKey="ID_BIBLIOTECA" Type="CURSO" />
+      <Association Name="BIBLIOTECA_KARMA" Member="KARMAs" ThisKey="ID_BIBLIOTECA" OtherKey="ID_BIBLIOTECA" Type="KARMA" />
+      <Association Name="BIBLIOTECA_NOTA" Member="NOTAs" ThisKey="ID_BIBLIOTECA" OtherKey="ID_BIBLIOTECA" Type="NOTA" />
+      <Association Name="BIBLIOTECA_TUTORIAL" Member="TUTORIALs" ThisKey="ID_BIBLIOTECA" OtherKey="ID_BIBLIOTECA" Type="TUTORIAL" />
+      <Association Name="ADMINISTRADOR_BIBLIOTECA" Member="ADMINISTRADOR" ThisKey="ID_ADMINISTRADOR" OtherKey="ID_ADMINISTRADOR" Type="ADMINISTRADOR" IsForeignKey="true" />
+      <Association Name="INDICE_BIBLIOTECA" Member="INDICE" ThisKey="ID_INDICE" OtherKey="ID_INDICE" Type="INDICE" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CATEGORIA" Member="CATEGORIAs">
+    <Type Name="CATEGORIA">
+      <Column Name="ID_CATEGORIA" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NOMBRE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DESCRIPCION" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="DIVISION" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="CATEGORIA_ADM_BIBLIOTECA" Member="ADM_BIBLIOTECAs" ThisKey="ID_CATEGORIA" OtherKey="ID_CATEGORIA" Type="ADM_BIBLIOTECA" />
+    </Type>
+  </Table>
+  <Table Name="dbo.COMENTARIO" Member="COMENTARIOs">
+    <Type Name="COMENTARIO">
+      <Column Name="ID_COMENTARIO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NOMBRE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="COMENTARIO" Member="COMENTARIO1" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="ID_NOTA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="NOTA_COMENTARIO" Member="NOTA" ThisKey="ID_NOTA" OtherKey="ID_NOTA" Type="NOTA" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CURSO" Member="CURSOs">
+    <Type Name="CURSO">
+      <Column Name="ID_CURSO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_BIBLIOTECA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="BIBLIOTECA_CURSO" Member="BIBLIOTECA" ThisKey="ID_BIBLIOTECA" OtherKey="ID_BIBLIOTECA" Type="BIBLIOTECA" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.INDICE" Member="INDICEs">
+    <Type Name="INDICE">
+      <Column Name="ID_INDICE" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NOMBRE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="URL" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Association Name="INDICE_BIBLIOTECA" Member="BIBLIOTECAs" ThisKey="ID_INDICE" OtherKey="ID_INDICE" Type="BIBLIOTECA" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KARMA" Member="KARMAs">
+    <Type Name="KARMA">
+      <Column Name="ID_KARMA" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_USUARIO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_BIBLIOTECA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_LIBRO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="BIBLIOTECA_KARMA" Member="BIBLIOTECA" ThisKey="ID_BIBLIOTECA" OtherKey="ID_BIBLIOTECA" Type="BIBLIOTECA" IsForeignKey="true" />
+      <Association Name="LIBRO_KARMA" Member="LIBRO" ThisKey="ID_LIBRO" OtherKey="ID_LIBRO" Type="LIBRO" IsForeignKey="true" />
+      <Association Name="USUARIO_KARMA" Member="USUARIO" ThisKey="ID_USUARIO" OtherKey="ID_USUARIO" Type="USUARIO" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LIBRO" Member="LIBROs">
+    <Type Name="LIBRO">
+      <Column Name="ID_LIBRO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AÑO_PUBLICACION" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TEMA" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DESCRPCION" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="TOTAL" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="ID_AUTOR" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_ADMINISTRADOR" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="LIBRO_ADM_BIBLIOTECA" Member="ADM_BIBLIOTECAs" ThisKey="ID_LIBRO" OtherKey="ID_LIBRO" Type="ADM_BIBLIOTECA" />
+      <Association Name="LIBRO_KARMA" Member="KARMAs" ThisKey="ID_LIBRO" OtherKey="ID_LIBRO" Type="KARMA" />
+      <Association Name="LIBRO_NOTA" Member="NOTAs" ThisKey="ID_LIBRO" OtherKey="ID_LIBRO" Type="NOTA" />
+      <Association Name="ADMINISTRADOR_LIBRO" Member="ADMINISTRADOR" ThisKey="ID_ADMINISTRADOR" OtherKey="ID_ADMINISTRADOR" Type="ADMINISTRADOR" IsForeignKey="true" />
+      <Association Name="AUTOR_LIBRO" Member="AUTOR" ThisKey="ID_AUTOR" OtherKey="ID_AUTOR" Type="AUTOR" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.NOTAS" Member="NOTAs">
+    <Type Name="NOTA">
+      <Column Name="ID_NOTA" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FECHA" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ID_BIBLIOTECA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_LIBRO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="NOTA_COMENTARIO" Member="COMENTARIOs" ThisKey="ID_NOTA" OtherKey="ID_NOTA" Type="COMENTARIO" />
+      <Association Name="NOTA_VISITA" Member="VISITAs" ThisKey="ID_NOTA" OtherKey="ID_NOTA" Type="VISITA" />
+      <Association Name="BIBLIOTECA_NOTA" Member="BIBLIOTECA" ThisKey="ID_BIBLIOTECA" OtherKey="ID_BIBLIOTECA" Type="BIBLIOTECA" IsForeignKey="true" />
+      <Association Name="LIBRO_NOTA" Member="LIBRO" ThisKey="ID_LIBRO" OtherKey="ID_LIBRO" Type="LIBRO" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PERSONA" Member="PERSONAs">
+    <Type Name="PERSONA">
+      <Column Name="ID_PERSONA" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NOMBRE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="APATERNO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AMATERNO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DESCRIPCION" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="UBICACION" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="AVATAR" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TUTORIAL" Member="TUTORIALs">
+    <Type Name="TUTORIAL">
+      <Column Name="ID_TUTORIAL" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_BIBLIOTECA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="BIBLIOTECA_TUTORIAL" Member="BIBLIOTECA" ThisKey="ID_BIBLIOTECA" OtherKey="ID_BIBLIOTECA" Type="BIBLIOTECA" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.USUARIO" Member="USUARIOs">
+    <Type Name="USUARIO">
+      <Column Name="ID_USUARIO" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NICK" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CONTRASEÑA" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="NIVEL_ACCESO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="USUARIO_KARMA" Member="KARMAs" ThisKey="ID_USUARIO" OtherKey="ID_USUARIO" Type="KARMA" />
+    </Type>
+  </Table>
+  <Table Name="dbo.VISITAS" Member="VISITAs">
+    <Type Name="VISITA">
+      <Column Name="ID_VISITA" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_NOTA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="NOTA_VISITA" Member="NOTA" ThisKey="ID_NOTA" OtherKey="ID_NOTA" Type="NOTA" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

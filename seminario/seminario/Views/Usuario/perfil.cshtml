@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Perfil";
+    Layout = "~/Views/Shared/_Layout2.cshtml"
+}
+
+<h1>MMI PERFIL</h1>
+
+@foreach(var item in @ViewBag.datos)
+{
+   <h2>@item.NickName</h2>
+    <h2>@item.Email</h2>
+    @item.Nombre
+    @item.app
+    @item.apm
+    @item.descripcion
+    @item.ubicacion
+}
+<li>@Html.ActionLink("Libroe", "Libros", "Usuario")</li>
+
+
+@section otra_seccion
+{ <h1>esta seccion si esta definaida en la vista</h1>
+}
+
+

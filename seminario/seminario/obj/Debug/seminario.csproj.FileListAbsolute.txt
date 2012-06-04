@@ -1,0 +1,7 @@
+c:\users\fabi\documents\visual studio 2010\Projects\seminario\seminario\bin\seminario.dll
+c:\users\fabi\documents\visual studio 2010\Projects\seminario\seminario\bin\seminario.pdb
+c:\users\fabi\documents\visual studio 2010\Projects\seminario\seminario\bin\EntityFramework.dll
+c:\users\fabi\documents\visual studio 2010\Projects\seminario\seminario\bin\EntityFramework.xml
+c:\users\fabi\documents\visual studio 2010\Projects\seminario\seminario\obj\Debug\ResolveAssemblyReference.cache
+c:\users\fabi\documents\visual studio 2010\Projects\seminario\seminario\obj\Debug\seminario.dll
+c:\users\fabi\documents\visual studio 2010\Projects\seminario\seminario\obj\Debug\seminario.pdb
